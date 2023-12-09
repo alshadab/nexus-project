@@ -34,14 +34,16 @@ const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
 const forumRoute = require('./routes/forum');
 const replyRoute = require('./routes/reply');
+const courseRoute = require('./routes/course');
 
 const feedbackRoute = require('./routes/feedback');
-
 
 dotenv.config();
 
 mongoose
-  .connect("mongodb+srv://samisadat:1234@cluster0.ofnomiz.mongodb.net/Cluster0?retryWrites=true&w=majority")
+  .connect(
+    'mongodb+srv://samisadat:1234@cluster0.ofnomiz.mongodb.net/Cluster0?retryWrites=true&w=majority'
+  )
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log(err));
 
@@ -51,7 +53,6 @@ app.use('/api/auth', authRoute);
 app.use('/api/forums', forumRoute);
 app.use('/api/replies', replyRoute);
 app.use('/api/feedback', feedbackRoute);
+app.use('/api/course', courseRoute);
 
-app.listen(5000, () =>
-  console.log(`Server is running on port ${5000}`)
-);
+app.listen(5000, () => console.log(`Server is running on port ${5000}`));
